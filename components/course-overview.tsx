@@ -241,8 +241,8 @@ export function CourseOverviewComponent() {
                 <span className="sr-only">Open menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="w-[200px]">
-              <div>
+            <SheetContent side="left">
+              <div className="w-[200px]">
                 <nav className="flex flex-col gap-4">
                   <Link href="/" className="text-lg font-medium hover:text-gray-300 transition-colors">
                     Home
