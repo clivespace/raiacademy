@@ -1,36 +1,47 @@
 "use client"
 
-import * as React from "react"
-import * as SelectPrimitive from "@radix-ui/react-select"
-import { Check, ChevronDown } from "lucide-react"
+import React from 'react';
+import * as SelectPrimitive from '@radix-ui/react-select';
+import { ChevronDown, Check } from 'lucide-react';
 
 import { cn } from "@/lib/utils"
 
-const Select = SelectPrimitive.Root
+interface SelectComponentProps {
+  className: string;
+  children: React.ReactNode;
+  value?: string;
+  onValueChange?: (value: string) => void;
+  name?: string;
+}
 
-const SelectGroup = SelectPrimitive.Group
+const SelectComponent = React.forwardRef<HTMLDivElement, SelectComponentProps>(
+  ({ className, children, value, onValueChange, name }, ref) => {
+    return (
+      <SelectPrimitive.Root value={value} onValueChange={onValueChange}>
+        <SelectPrimitive.Trigger asChild>
+          <div
+            ref={ref}
+            className={cn(
+              "flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+              className
+            )}
+          >
+            {children}
+            <SelectPrimitive.Icon asChild>
+              <ChevronDown className="h-4 w-4 opacity-50" />
+            </SelectPrimitive.Icon>
+          </div>
+        </SelectPrimitive.Trigger>
+      </SelectPrimitive.Root>
+    )
+  }
+);
 
-const SelectValue = SelectPrimitive.Value
+const SelectTrigger = SelectPrimitive.Trigger;
 
-const SelectTrigger = React.forwardRef<
-  React.ElementRef<typeof SelectPrimitive.Trigger>,
-  React.ComponentProps<typeof SelectPrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
-  <SelectPrimitive.Trigger
-    ref={ref}
-    className={cn(
-      "flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
-      className
-    )}
-    {...props}
-  >
-    {children}
-    <SelectPrimitive.Icon asChild>
-      <ChevronDown className="h-4 w-4 opacity-50" />
-    </SelectPrimitive.Icon>
-  </SelectPrimitive.Trigger>
-))
-SelectTrigger.displayName = SelectPrimitive.Trigger.displayName
+const SelectGroup = SelectPrimitive.Group;
+
+const SelectValue = SelectPrimitive.Value;
 
 const SelectContent = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Content>,
@@ -86,10 +97,10 @@ const SelectItem = React.forwardRef<
 SelectItem.displayName = SelectPrimitive.Item.displayName
 
 export {
-  Select,
+  SelectComponent as Select,
+  SelectTrigger,
   SelectGroup,
   SelectValue,
-  SelectTrigger,
   SelectContent,
   SelectItem,
 }

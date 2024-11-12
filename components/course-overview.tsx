@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -230,6 +231,11 @@ export function CourseOverviewComponent() {
     setSelectedCourse(null)
   }
 
+  // Fix implicit 'any' types
+  const handleEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setSearchTerm(e.target.value);
+  };
+
   return (
     <div className="min-h-screen bg-[#E5E5E5]">
       <header className="bg-[#4A4A4A] text-white py-4">
@@ -285,24 +291,24 @@ export function CourseOverviewComponent() {
               </Button>
               <h1 className="text-3xl font-bold mb-6">{selectedCourse.title}</h1>
               <div className="grid md:grid-cols-2 gap-8">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Course Outline</CardTitle>
+                <Card className="bg-white border-0">
+                  <CardHeader className="p-4">
+                    <CardTitle className="text-lg font-bold">Course Outline</CardTitle>
                   </CardHeader>
-                  <CardContent>
+                  <CardContent className="p-4">
                     <ul className="list-disc pl-5 space-y-2">
-                      {selectedCourse.courseOutline.map((item, index) => (
+                      {selectedCourse.courseOutline.map((item: string, index: number) => (
                         <li key={index}>{item}</li>
                       ))}
                     </ul>
                   </CardContent>
                 </Card>
                 <div className="space-y-8">
-                  <Card>
-                    <CardHeader>
-                      <CardTitle>Instructor</CardTitle>
+                  <Card className="bg-white border-0">
+                    <CardHeader className="p-4">
+                      <CardTitle className="text-lg font-bold">Instructor</CardTitle>
                     </CardHeader>
-                    <CardContent>
+                    <CardContent className="p-4">
                       <div className="flex items-center space-x-4">
                         <Image
                           src={selectedCourse.teacherImage}
@@ -315,13 +321,13 @@ export function CourseOverviewComponent() {
                       </div>
                     </CardContent>
                   </Card>
-                  <Card>
-                    <CardHeader>
-                      <CardTitle>What You'll Be Able to Do</CardTitle>
+                  <Card className="bg-white border-0">
+                    <CardHeader className="p-4">
+                      <CardTitle className="text-lg font-bold">What You'll Be Able to Do</CardTitle>
                     </CardHeader>
-                    <CardContent>
+                    <CardContent className="p-4">
                       <ul className="list-disc pl-5 space-y-2">
-                        {selectedCourse.outcomes.map((outcome, index) => (
+                        {selectedCourse.outcomes.map((outcome: string, index: number) => (
                           <li key={index}>{outcome}</li>
                         ))}
                       </ul>
@@ -344,7 +350,7 @@ export function CourseOverviewComponent() {
                   type="text"
                   placeholder="Search..."
                   value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
+                  onChange={handleEvent}
                   className="w-full bg-white border-0"
                 />
               </div>

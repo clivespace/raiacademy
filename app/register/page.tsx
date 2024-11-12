@@ -224,7 +224,11 @@ export default function Registration() {
 
       <div className="space-y-2">
         <Label htmlFor="expertise" className="text-base">Select Your Level of Expertise with Generative AI</Label>
-        <Select>
+        <Select
+          className="h-12"
+          value={selectedDate}
+          onValueChange={setSelectedDate}
+        >
           <SelectTrigger id="expertise" className="h-12">
             <SelectValue placeholder="Select your expertise level" />
           </SelectTrigger>
@@ -240,7 +244,11 @@ export default function Registration() {
 
       <div className="space-y-2">
         <Label htmlFor="workshop-dates" className="text-base">Select Workshop Dates</Label>
-        <Select value={selectedDate} onValueChange={setSelectedDate}>
+        <Select
+          className="h-12"
+          value={selectedDate}
+          onValueChange={setSelectedDate}
+        >
           <SelectTrigger id="workshop-dates" className="h-12">
             <SelectValue placeholder="Select workshop dates" />
           </SelectTrigger>

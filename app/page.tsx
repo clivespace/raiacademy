@@ -256,7 +256,7 @@ export default function HomePage() {
               <form className="space-y-3 md:space-y-4 max-w-xl mx-auto">
                 <Input type="text" placeholder="Name" required className="bg-white" />
                 <Input type="email" placeholder="Email Address" required className="bg-white" />
-                <Select name="expertise">
+                <Select name="expertise" className="your-class-name">
                   <SelectTrigger className="w-full bg-white no-scale">
                     <SelectValue placeholder="Select Your Level of Expertise with Generative AI" />
                   </SelectTrigger>
