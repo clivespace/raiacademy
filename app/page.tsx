@@ -162,9 +162,11 @@ export default function HomePage() {
                           ))}
                         </ul>
                         {topic.title === "Upcoming Workshops" && (
-                          <Button className="w-full bg-[#FFA500] text-white">
-                            Register Now
-                          </Button>
+                          <Link href="/register">
+                            <Button className="w-full bg-[#FFA500] text-white">
+                              Register Now
+                            </Button>
+                          </Link>
                         )}
                       </div>
                     </div>
@@ -188,9 +190,11 @@ export default function HomePage() {
                         ))}
                       </ul>
                       {expandedTopic === "Upcoming Workshops" && (
-                        <Button className="bg-[#FFA500] text-white">
-                          Register Now
-                        </Button>
+                        <Link href="/register">
+                          <Button className="bg-[#FFA500] text-white">
+                            Register Now
+                          </Button>
+                        </Link>
                       )}
                     </>
                   )}
@@ -211,7 +215,7 @@ export default function HomePage() {
                 <Input type="text" placeholder="Name" required className="bg-white" />
                 <Input type="email" placeholder="Email Address" required className="bg-white" />
                 <Select name="expertise" className="your-class-name">
-                  <SelectTrigger className="w-full bg-white no-scale">
+                  <SelectTrigger className="w-full bg-white text-left no-scale">
                     <SelectValue placeholder="Select Your Level of Expertise with Generative AI" />
                   </SelectTrigger>
                   <SelectContent>
