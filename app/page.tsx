@@ -96,11 +96,10 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
         <div className="relative z-10 text-center text-stone-200 px-4 py-12 w-full mt-16 sm:mt-24">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 animate-fade-in-up" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.7)' }}>
-            Become a GenAI Expert<br />
-            with Renaissance AI Academy
+            Become an Expert in GenAI for Marketing and Creative
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl font-medium mb-8 animate-fade-in-up animation-delay-300">
-            Join our workshops and fine tune your creative & marketing skills
+            Join our workshops and fine tune your skill development
           </p>
           <Link href="/workshops/overview">
             <Button 
